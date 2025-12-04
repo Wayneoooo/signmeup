@@ -6,7 +6,10 @@ const jwt = require('jsonwebtoken');
 const auth = require('../middleware/auth');
 const isAdmin = require('../middleware/isAdmin');
 
-// Debug
+const sendEmail = require("../utils/email/sendEmail");
+const { welcomeTemplate } = require("../utils/email/templates");
+
+// Debug route
 router.get('/debug', (req, res) => res.send('AUTH ROUTES LOADED'));
 
 // ----------------------
@@ -26,6 +29,18 @@ router.post('/register', async (req, res) => {
         role: "USER", // Always USER
       },
     });
+
+    // Send welcome email
+    try {
+      await sendEmail({
+        to: user.email,
+        subject: "Welcome to SignMeUp!",
+        html: welcomeTemplate(user.name),
+      });
+      console.log("Welcome email sent to:", user.email);
+    } catch (err) {
+      console.error("Failed to send welcome email:", err);
+    }
 
     res.json({
       message: "User registered successfully",
