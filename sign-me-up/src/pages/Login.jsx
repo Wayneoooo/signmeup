@@ -73,7 +73,7 @@ export default function Login() {
 
         <h1 className="text-2xl font-semibold text-gray-900 text-center mb-1">Welcome back</h1>
         <p className="text-center text-sm text-gray-600 mb-6">
-          Log in to continue to <span className="text-blue-600 font-medium">SignMeUp</span>
+          Log in to continue to <span className="text-red-600 font-medium">SignMeUp</span>
         </p>
 
         {error && <div className="mb-4 text-sm text-red-600">{error}</div>}
@@ -112,7 +112,7 @@ export default function Login() {
             whileTap={{ scale: 0.98 }}
             type="submit"
             disabled={loading}
-            className="w-full py-3 mt-1 bg-blue-600 text-white rounded-xl shadow hover:bg-blue-700 disabled:opacity-60 disabled:cursor-not-allowed transition"
+            className="w-full py-3 mt-1 bg-red-600 text-white rounded-xl shadow hover:bg-blue-700 disabled:opacity-60 disabled:cursor-not-allowed transition"
           >
             {loading ? "Signing in..." : "Login"}
           </motion.button>
@@ -120,7 +120,7 @@ export default function Login() {
 
         <div className="mt-6 text-center text-sm text-gray-600">
           Don’t have an account?{" "}
-          <Link to="/register" className="text-blue-600 font-medium hover:underline">
+          <Link to="/register" className="text-red-600 font-medium hover:underline">
             Create one
           </Link>
         </div>

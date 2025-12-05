@@ -29,14 +29,14 @@ export default function Home() {
         <div className="flex justify-center gap-4 mt-6">
           <Link
             to="/events"
-            className="px-6 py-3 rounded-xl shadow bg-blue-600 text-white hover:bg-blue-700 transition-all"
+            className="px-6 py-3 rounded-xl shadow bg-red-600 text-white hover:bg-red-700 transition-all"
           >
             View Events
           </Link>
 
           <Link
             to="/register"
-            className="px-6 py-3 rounded-xl shadow border border-blue-600 text-blue-600 hover:bg-blue-50 transition-all"
+            className="px-6 py-3 rounded-xl shadow border border-red-600 text-red-600 hover:bg-red-50 transition-all"
           >
             Create Account
           </Link>
