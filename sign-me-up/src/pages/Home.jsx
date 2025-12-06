@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-
+import  logo  from "../assets/logo.png";
 export default function Home() {
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-6">
@@ -13,7 +13,7 @@ export default function Home() {
       >
         {/* Logo placeholder */}
         <div className="flex justify-center mb-6">
-          <div className="w-20 h-20 bg-gray-200 rounded-2xl shadow-inner" />
+         <img src={logo} alt className="w-24 h-24 object-contain" />
         </div>
 
         <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-4">
