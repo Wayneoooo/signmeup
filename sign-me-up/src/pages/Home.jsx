@@ -21,7 +21,7 @@ export default function Home() {
         </h1>
 
         <p className="text-gray-600 text-lg md:text-xl leading-relaxed mb-8">
-         Better Planning, Happy <S></S>erving!
+         Better Planning, Happy Serving!
         </p>
 
         <div className="flex justify-center gap-4 mt-6">
