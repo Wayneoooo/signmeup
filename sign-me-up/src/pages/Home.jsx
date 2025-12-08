@@ -21,9 +21,7 @@ export default function Home() {
         </h1>
 
         <p className="text-gray-600 text-lg md:text-xl leading-relaxed mb-8">
-          A clean and simple platform for managing event sign‑ups with ease. Add
-          your own text, images, or branding to make this landing page truly
-          yours.
+         Better Planning, Happy <S></S>erving!
         </p>
 
         <div className="flex justify-center gap-4 mt-6">

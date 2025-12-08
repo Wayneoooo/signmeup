@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { motion } from "framer-motion";
+import  logo  from "../assets/logo.png";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -63,13 +64,11 @@ export default function Login() {
         transition={{ duration: 0.6 }}
         className="bg-white/90 backdrop-blur-sm shadow-xl rounded-2xl p-8 w-full max-w-md z-10"
       >
-        {/* Logo */}
-        <div className="flex justify-center mb-6">
-          <div className="w-16 h-16 bg-gray-200 rounded-2xl shadow-inner flex items-center justify-center">
-            {/* Replace with your <img src='/logo.png' /> */}
-            <span className="text-lg font-bold text-gray-600">SMU</span>
-          </div>
-        </div>
+      {/* Logo placeholder */}
+              <div className="flex justify-center mb-6">
+               <img src={logo} alt className="w-24 h-24 object-contain" />
+              </div>
+        
 
         <h1 className="text-2xl font-semibold text-gray-900 text-center mb-1">Welcome back</h1>
         <p className="text-center text-sm text-gray-600 mb-6">
