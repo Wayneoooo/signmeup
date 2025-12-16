@@ -138,5 +138,23 @@ router.delete('/:id/signup', auth, async (req, res) => {
   }
 });
 
+// DELETE event (admin only)
+router.delete('/:id', auth, isAdmin, async (req, res) => {
+  try {
+    const eventId = Number(req.params.id);
+
+    // Optional: fetch event first if you want to send notifications
+    const event = await prisma.event.findUnique({ where: { id: eventId } });
+    if (!event) return res.status(404).json({ error: 'Event not found' });
+
+    await prisma.event.delete({ where: { id: eventId } });
+
+    res.json({ message: 'Event deleted successfully', event });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+
 module.exports = router;
 

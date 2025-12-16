@@ -6,10 +6,16 @@ export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(null);
+  const [loading, setLoading] = useState(false);
+
   const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
+    setError(null);
+    setSuccess(null);
+    setLoading(true);
 
     try {
       const res = await fetch("http://localhost:3000/auth/register", {
@@ -20,9 +26,17 @@ export default function Register() {
 
       if (!res.ok) throw new Error("Registration failed");
 
-      navigate("/login");
+      setSuccess("Account created successfully! Redirecting to login...");
+
+      // Delay redirect so user sees the message
+      setTimeout(() => {
+        navigate("/login");
+      }, 2000);
+
     } catch (err) {
-      setError("Something went wrong");
+      setError("Registration failed. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -39,6 +53,7 @@ export default function Register() {
             placeholder="Full Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            required
           />
 
           <input
@@ -47,6 +62,7 @@ export default function Register() {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
           />
 
           <input
@@ -55,17 +71,23 @@ export default function Register() {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
 
           {error && (
             <p className="text-red-500 text-sm text-center">{error}</p>
           )}
 
+          {success && (
+            <p className="text-green-600 text-sm text-center">{success}</p>
+          )}
+
           <button
             type="submit"
-            className="w-full py-3 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-xl transition"
+            disabled={loading}
+            className="w-full py-3 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-xl transition disabled:opacity-60"
           >
-            Create Account
+            {loading ? "Creating account..." : "Create Account"}
           </button>
         </form>
 
@@ -82,3 +104,4 @@ export default function Register() {
     </div>
   );
 }
+

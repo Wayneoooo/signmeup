@@ -38,6 +38,7 @@ export function AuthProvider({ children }) {
     localStorage.removeItem("token");
     setToken(null);
     setUser(null);
+    return "You have logged out successfully";
   };
 
   return (

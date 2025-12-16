@@ -1,8 +1,17 @@
-import { Link } from "react-router-dom"; 
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 export default function Navbar() {
   const { user, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    const message = logout();
+
+    navigate("/", {
+      state: { logoutMessage: message },
+    });
+  };
 
   return (
     <nav className="bg-white border-b border-gray-300 p-4 flex gap-6 text-gray-900 shadow-sm">
@@ -20,13 +29,12 @@ export default function Navbar() {
           <Link className="hover:text-blue-600" to="/events">Events</Link>
           <Link className="hover:text-blue-600" to="/dashboard">Dashboard</Link>
 
-          {/* Only show admin link if user is ADMIN */}
           {user.role === "admin" && (
             <Link className="hover:text-blue-600" to="/admin">Admin</Link>
           )}
 
           <button
-            onClick={logout}
+            onClick={handleLogout}
             className="hover:text-red-600 ml-auto"
           >
             Logout
@@ -36,6 +44,7 @@ export default function Navbar() {
     </nav>
   );
 }
+
 
 
 

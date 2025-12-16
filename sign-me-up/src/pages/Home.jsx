@@ -1,9 +1,20 @@
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
-import  logo  from "../assets/logo.png";
+import { Link, useLocation } from "react-router-dom";
+import logo from "../assets/logo.png";
+
 export default function Home() {
+  const location = useLocation();
+  const logoutMessage = location.state?.logoutMessage;
+
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-6">
+      
+      {logoutMessage && (
+        <div className="mb-6 px-4 py-3 rounded-xl bg-green-50 border border-green-200 text-green-700 text-sm shadow-sm">
+          {logoutMessage}
+        </div>
+      )}
+
       {/* Hero Section */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -11,9 +22,9 @@ export default function Home() {
         transition={{ duration: 0.6 }}
         className="max-w-3xl text-center"
       >
-        {/* Logo placeholder */}
+        {/* Logo */}
         <div className="flex justify-center mb-6">
-         <img src={logo} alt className="w-24 h-24 object-contain" />
+          <img src={logo} alt="" className="w-24 h-24 object-contain" />
         </div>
 
         <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-4">
@@ -21,7 +32,7 @@ export default function Home() {
         </h1>
 
         <p className="text-gray-600 text-lg md:text-xl leading-relaxed mb-8">
-         Better Planning, Happy Serving!
+          Better Planning, Happy Serving!
         </p>
 
         <div className="flex justify-center gap-4 mt-6">
@@ -58,3 +69,6 @@ export default function Home() {
     </div>
   );
 }
+
+
+
