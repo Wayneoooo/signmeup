@@ -2,8 +2,6 @@
 
 A web application for teams to manage event participation and volunteer allocation.
 
-<!-- Add 2–3 screenshots here: events list, event details with sign-up, admin dashboard -->
-<!-- ![Events page](docs/events.png) -->
 
 ## Description
 
